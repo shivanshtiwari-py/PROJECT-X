@@ -25,7 +25,9 @@ model = smp.Unet(
 
 MODEL_PATH = "best_model.pth"
 if os.path.exists(MODEL_PATH):
-    model.load_state_dict(torch.load(MODEL_PATH, map_location=device, weight_only=True))
+    model.load_state_dict(
+        torch.load(MODEL_PATH, map_location=device, weights_only=True)
+    )
     print(f"✅ Model loaded — device: {device}")
 else:
     print("⚠️  best_model.pth not found — running in demo mode")
